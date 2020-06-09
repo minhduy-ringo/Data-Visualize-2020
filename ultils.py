@@ -1,3 +1,5 @@
+# Support looking for tracking file crawl by corona spider
+
 import glob
 import os
 
@@ -5,6 +7,11 @@ dir_name = os.path.dirname(__file__)
 tracking_dir = os.path.join(dir_name, 'corona_tracking/')
 
 def FindByDate(date):
+    """
+        Find a file in tracking folder by input date and return an absolute path to the file\n
+        FindByDate(date: string)\n
+        Date format: ddMmm Ex: 06Jun
+    """
     os.chdir(tracking_dir)
     try:
         file_name = glob.glob('*' + date + '*')
@@ -14,6 +21,9 @@ def FindByDate(date):
     return file_name
 
 def AllFiles():
+    """
+        Return a list contains absolute path to all the files in tracking folder\n
+    """
     os.chdir(tracking_dir)
     all_files = glob.glob('*.csv')
     try:
